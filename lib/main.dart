@@ -1,7 +1,5 @@
-
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-
 
 void main() {
   runApp(const PortfolioApp());
@@ -44,10 +42,7 @@ Future<void> openUrl(String url) async {
   final uri = Uri.parse(url);
 
   try {
-    await launchUrl(
-      uri,
-      mode: LaunchMode.externalApplication,
-    );
+    await launchUrl(uri, mode: LaunchMode.externalApplication);
   } catch (e) {
     debugPrint('Could not open URL: $e');
   }
@@ -127,7 +122,7 @@ const List<Project> projects = [
   ),
   Project(
     title: "React Calculator",
-    category: 'Calculation',
+    category: 'Web Development',
     description:
         'A clean, slate-themed React & TypeScript calculator with Dark/Light mode',
     image: 'assets/images/thels_kitchen.png',
@@ -137,8 +132,7 @@ const List<Project> projects = [
   Project(
     title: "TalkyVerse",
     category: 'Video calling app',
-    description:
-        'Real-time video calling app',
+    description: 'Real-time video calling app',
     image: 'assets/images/thels_kitchen.png',
     technologies: ['Flutter', 'Localization', 'Audio'],
     github: 'https://github.com/dardar12/talky_verse',
@@ -211,10 +205,7 @@ class _PortfolioHomeState extends State<PortfolioHome> {
                         onContact: () => goToSection(4),
                       ),
                     ),
-                    Container(
-                      key: sectionKeys[1],
-                      child: const AboutSection(),
-                    ),
+                    Container(key: sectionKeys[1], child: const AboutSection()),
                     Container(
                       key: sectionKeys[2],
                       child: const SkillsSection(),
@@ -250,11 +241,7 @@ class _PortfolioHomeState extends State<PortfolioHome> {
           ),
           decoration: const BoxDecoration(
             color: bg,
-            border: Border(
-              bottom: BorderSide(
-                color: Color(0xFF202B40),
-              ),
-            ),
+            border: Border(bottom: BorderSide(color: Color(0xFF202B40))),
           ),
           child: Row(
             children: [
@@ -271,10 +258,7 @@ class _PortfolioHomeState extends State<PortfolioHome> {
 
               if (mobile)
                 PopupMenuButton<int>(
-                  icon: const Icon(
-                    Icons.menu,
-                    color: Colors.white,
-                  ),
+                  icon: const Icon(Icons.menu, color: Colors.white),
                   color: surface,
                   onSelected: goToSection,
                   itemBuilder: (context) {
@@ -295,9 +279,7 @@ class _PortfolioHomeState extends State<PortfolioHome> {
                       onPressed: () => goToSection(index),
                       child: Text(
                         navItems[index],
-                        style: const TextStyle(
-                          color: Colors.white70,
-                        ),
+                        style: const TextStyle(color: Colors.white70),
                       ),
                     ),
                   ),
@@ -339,10 +321,7 @@ class HeroSection extends StatelessWidget {
       decoration: BoxDecoration(
         color: surface,
         borderRadius: BorderRadius.circular(30),
-        border: Border.all(
-          color: accent.withValues(alpha: 0.6),
-          width: 2,
-        ),
+        border: Border.all(color: accent.withValues(alpha: 0.6), width: 2),
         boxShadow: [
           BoxShadow(
             color: accent.withValues(alpha: 0.15),
@@ -357,11 +336,7 @@ class HeroSection extends StatelessWidget {
         fit: BoxFit.cover,
         errorBuilder: (context, error, stack) {
           return const Center(
-            child: Icon(
-              Icons.person,
-              color: accent,
-              size: 110,
-            ),
+            child: Icon(Icons.person, color: accent, size: 110),
           );
         },
       ),
@@ -373,10 +348,7 @@ class HeroSection extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 14,
-            vertical: 9,
-          ),
+          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 9),
           decoration: BoxDecoration(
             color: accent.withValues(alpha: 0.12),
             borderRadius: BorderRadius.circular(30),
@@ -416,11 +388,7 @@ class HeroSection extends StatelessWidget {
           'I build beautiful, functional and user-friendly '
           'digital experiences for mobile and web platforms. '
           'I enjoy turning ideas into real applications.',
-          style: TextStyle(
-            color: muted,
-            fontSize: 15,
-            height: 1.8,
-          ),
+          style: TextStyle(color: muted, fontSize: 15, height: 1.8),
         ),
         const SizedBox(height: 30),
         Wrap(
@@ -438,9 +406,7 @@ class HeroSection extends StatelessWidget {
               ),
             ),
             OutlinedButton.icon(
-              onPressed: () => openUrl(
-                'https://github.com/dardar12',
-              ),
+              onPressed: () => openUrl('https://github.com/dardar12'),
               icon: const Icon(Icons.code),
               label: const Text('GitHub'),
               style: OutlinedButton.styleFrom(
@@ -472,10 +438,7 @@ class HeroSection extends StatelessWidget {
           child: ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 1150),
             child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 24,
-                vertical: 85,
-              ),
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 85),
               child: mobile
                   ? Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -488,15 +451,9 @@ class HeroSection extends StatelessWidget {
                   : Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Expanded(
-                          flex: 3,
-                          child: introduction(),
-                        ),
+                        Expanded(flex: 3, child: introduction()),
                         const SizedBox(width: 65),
-                        Expanded(
-                          flex: 2,
-                          child: Center(child: profileImage()),
-                        ),
+                        Expanded(flex: 2, child: Center(child: profileImage())),
                       ],
                     ),
             ),
@@ -537,20 +494,13 @@ class SectionTitle extends StatelessWidget {
         Text(
           title,
           textAlign: TextAlign.center,
-          style: const TextStyle(
-            fontSize: 34,
-            fontWeight: FontWeight.bold,
-          ),
+          style: const TextStyle(fontSize: 34, fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: 12),
         Text(
           subtitle,
           textAlign: TextAlign.center,
-          style: const TextStyle(
-            color: muted,
-            fontSize: 15,
-            height: 1.7,
-          ),
+          style: const TextStyle(color: muted, fontSize: 15, height: 1.7),
         ),
       ],
     );
@@ -567,10 +517,7 @@ class AboutSection extends StatelessWidget {
     return Container(
       width: double.infinity,
       color: surface.withValues(alpha: 0.55),
-      padding: const EdgeInsets.symmetric(
-        horizontal: 24,
-        vertical: 75,
-      ),
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 75),
       child: Center(
         child: ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 850),
@@ -591,11 +538,7 @@ class AboutSection extends StatelessWidget {
                 'TypeScript and Tailwind CSS. I am always excited to '
                 'learn new technologies and build meaningful projects.',
                 textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: muted,
-                  height: 2,
-                  fontSize: 16,
-                ),
+                style: TextStyle(color: muted, height: 2, fontSize: 16),
               ),
             ],
           ),
@@ -626,10 +569,7 @@ class SkillsSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 24,
-        vertical: 75,
-      ),
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 75),
       child: Center(
         child: ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 950),
@@ -654,23 +594,16 @@ class SkillsSection extends StatelessWidget {
                     decoration: BoxDecoration(
                       color: surface,
                       borderRadius: BorderRadius.circular(14),
-                      border: Border.all(
-                        color: const Color(0xFF29334B),
-                      ),
+                      border: Border.all(color: const Color(0xFF29334B)),
                     ),
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Icon(
-                          skill['icon'] as IconData,
-                          color: accent,
-                        ),
+                        Icon(skill['icon'] as IconData, color: accent),
                         const SizedBox(width: 10),
                         Text(
                           skill['name'] as String,
-                          style: const TextStyle(
-                            fontWeight: FontWeight.w600,
-                          ),
+                          style: const TextStyle(fontWeight: FontWeight.w600),
                         ),
                       ],
                     ),
@@ -695,10 +628,7 @@ class ProjectsSection extends StatelessWidget {
     return Container(
       width: double.infinity,
       color: surface.withValues(alpha: 0.55),
-      padding: const EdgeInsets.symmetric(
-        horizontal: 24,
-        vertical: 75,
-      ),
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 75),
       child: Center(
         child: ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 1150),
@@ -714,25 +644,20 @@ class ProjectsSection extends StatelessWidget {
               const SizedBox(height: 40),
               LayoutBuilder(
                 builder: (context, constraints) {
-                  final columns =
-                      constraints.maxWidth > 850 ? 2 : 1;
+                  final columns = constraints.maxWidth > 850 ? 2 : 1;
 
                   return GridView.builder(
                     shrinkWrap: true,
-                    physics:
-                        const NeverScrollableScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                     itemCount: projects.length,
-                    gridDelegate:
-                        SliverGridDelegateWithFixedCrossAxisCount(
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: columns,
                       crossAxisSpacing: 24,
                       mainAxisSpacing: 24,
                       mainAxisExtent: 410,
                     ),
                     itemBuilder: (context, index) {
-                      return ProjectCard(
-                        project: projects[index],
-                      );
+                      return ProjectCard(project: projects[index]);
                     },
                   );
                 },
@@ -750,10 +675,7 @@ class ProjectsSection extends StatelessWidget {
 class ProjectCard extends StatefulWidget {
   final Project project;
 
-  const ProjectCard({
-    super.key,
-    required this.project,
-  });
+  const ProjectCard({super.key, required this.project});
 
   @override
   State<ProjectCard> createState() => _ProjectCardState();
@@ -771,18 +693,12 @@ class _ProjectCardState extends State<ProjectCard> {
       onExit: (_) => setState(() => hovering = false),
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 250),
-        transform: Matrix4.translationValues(
-          0,
-          hovering ? -6 : 0,
-          0,
-        ),
+        transform: Matrix4.translationValues(0, hovering ? -6 : 0, 0),
         decoration: BoxDecoration(
           color: surface,
           borderRadius: BorderRadius.circular(20),
           border: Border.all(
-            color: hovering
-                ? accent
-                : const Color(0xFF29334B),
+            color: hovering ? accent : const Color(0xFF29334B),
           ),
           boxShadow: hovering
               ? [
@@ -885,10 +801,7 @@ class _ProjectCardState extends State<ProjectCard> {
                           ),
                           child: Text(
                             tech,
-                            style: const TextStyle(
-                              color: accent,
-                              fontSize: 10,
-                            ),
+                            style: const TextStyle(color: accent, fontSize: 10),
                           ),
                         );
                       }).toList(),
@@ -896,10 +809,7 @@ class _ProjectCardState extends State<ProjectCard> {
                     const Spacer(),
                     OutlinedButton.icon(
                       onPressed: () => openUrl(project.github),
-                      icon: const Icon(
-                        Icons.code,
-                        size: 18,
-                      ),
+                      icon: const Icon(Icons.code, size: 18),
                       label: const Text('View on GitHub'),
                       style: OutlinedButton.styleFrom(
                         foregroundColor: Colors.white,
@@ -925,10 +835,7 @@ class ContactSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 24,
-        vertical: 85,
-      ),
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 85),
       child: Center(
         child: ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 750),
@@ -962,12 +869,7 @@ class ContactSection extends StatelessWidget {
     );
   }
 
-  Widget contactTile(
-    IconData icon,
-    String title,
-    String value,
-    String url,
-  ) {
+  Widget contactTile(IconData icon, String title, String value, String url) {
     return InkWell(
       onTap: () => openUrl(url),
       borderRadius: BorderRadius.circular(15),
@@ -976,9 +878,7 @@ class ContactSection extends StatelessWidget {
         decoration: BoxDecoration(
           color: surface,
           borderRadius: BorderRadius.circular(15),
-          border: Border.all(
-            color: const Color(0xFF29334B),
-          ),
+          border: Border.all(color: const Color(0xFF29334B)),
         ),
         child: Row(
           children: [
@@ -990,22 +890,14 @@ class ContactSection extends StatelessWidget {
                 children: [
                   Text(
                     title,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 5),
-                  Text(
-                    value,
-                    style: const TextStyle(color: muted),
-                  ),
+                  Text(value, style: const TextStyle(color: muted)),
                 ],
               ),
             ),
-            const Icon(
-              Icons.arrow_outward,
-              color: accent,
-            ),
+            const Icon(Icons.arrow_outward, color: accent),
           ],
         ),
       ),
@@ -1024,11 +916,7 @@ class FooterSection extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.all(25),
       decoration: const BoxDecoration(
-        border: Border(
-          top: BorderSide(
-            color: Color(0xFF29334B),
-          ),
-        ),
+        border: Border(top: BorderSide(color: Color(0xFF29334B))),
       ),
       child: const Column(
         children: [
@@ -1043,18 +931,12 @@ class FooterSection extends StatelessWidget {
           SizedBox(height: 10),
           Text(
             'Designed & Built with Flutter 💜',
-            style: TextStyle(
-              color: muted,
-              fontSize: 12,
-            ),
+            style: TextStyle(color: muted, fontSize: 12),
           ),
           SizedBox(height: 5),
           Text(
             '© 2026 Su Nandar Nyein. All rights reserved.',
-            style: TextStyle(
-              color: muted,
-              fontSize: 11,
-            ),
+            style: TextStyle(color: muted, fontSize: 11),
           ),
         ],
       ),
